@@ -10,22 +10,22 @@ import logo from "./assets/Photo/Logo/logo.png";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const MENU_DATA = {
-  categories: [
+   categories: [
     {
       id: "pasta",
       name: "Pasta",
       tagline: "Handmade Italian Classics",
       emoji: "🍝",
       items: [
-        { name: "Texas Alfredo", desc: "Fettuccine in rich creamy white sauce with grilled chicken, mushrooms & parmesan, served with garlic bread.", price: "109.00" },
-        { name: "Arrabiatta Pasta", desc: "Spicy red tomato sauce with chilli peppers, garlic and fresh basil.", price: "69.99" },
-        { name: "Shrimp Pasta", desc: "Delicious shrimp in a rich rose sauce with parmesan.", price: "109.00" },
-        { name: "Spicy Chicken Ranch", desc: "Grilled chicken in creamy ranch sauce with a spicy kick.", price: "99.99" },
-        { name: "California Pasta", desc: "Our signature house pasta with mixed vegetables and herbs.", price: "72.99" },
-        { name: "Spaghetti Bolognese", desc: "Classic pasta with rich beef Bolognese sauce.", price: null },
-        { name: "Mac & Cheese", desc: "Creamy triple-cheese pasta, golden baked.", price: null },
+        { name: "Texas Alfredo", desc: "Fettuccine in rich creamy white sauce with grilled chicken, mushrooms & parmesan, served with garlic bread.", price: "120" },
+        { name: "Arrabiatta Pasta", desc: "Spicy red tomato sauce with chilli peppers, garlic and fresh basil.", price: "130" },
+        { name: "Shrimp Pasta", desc: "Delicious shrimp in a rich rose sauce with parmesan.", price: "190" },
+        { name: "Spicy Chicken Ranch", desc: "Grilled chicken in creamy ranch sauce with a spicy kick.", price: "150" },
+        { name: "California Pasta", desc: "Our signature house pasta with mixed vegetables and herbs.", price: "120" },
+        { name: "Spaghetti Bolognese", desc: "Classic pasta with rich beef Bolognese sauce.", price: "110" },
+        { name: "Mac & Cheese", desc: "Creamy triple-cheese pasta, golden baked.", price: "150" },
         { name: "Nigresco Pasta", desc: "Black squid-ink pasta with a seafood medley.", price: null },
-        { name: "Pesto Chicken", desc: "Grilled chicken in fresh basil pesto sauce.", price: null },
+        { name: "Pesto Chicken", desc: "Grilled chicken in fresh basil pesto sauce.", price: "100" },
       ]
     },
     {
@@ -51,7 +51,7 @@ const MENU_DATA = {
       tagline: "Flame Grilled",
       emoji: "🍔",
       items: [
-        { name: "Classic Burger", desc: "Beef patty, lettuce, tomato, pickles, classic sauce, served with fries.", price: "84.99" },
+        { name: "Classic Burger", desc: "Beef patty, lettuce, tomato, pickles, classic sauce, served with fries.", price: "135" },
         { name: "Cheese Burger", desc: "Beef patty, melted cheddar, lettuce, tomato, pickles, served with fries.", price: "89.99" },
         { name: "California Premium", desc: "Double beef, double cheese, caramelized onion, signature sauce, fries.", price: "94.99" },
         { name: "Spicy Burger", desc: "Beef patty, jalapeños, pepper jack, spicy mayo, served with fries.", price: "84.99" },
@@ -112,10 +112,10 @@ const MENU_DATA = {
       tagline: "Sparkling & Vibrant",
       emoji: "🫧",
       items: [
-        { name: "Pink Popa", desc: "Sweet fizzy pink cocktail rich with strawberry syrup and crushed ice.", price: null },
-        { name: "Blue Pupls", desc: "Electric blue sparkling drink with a citrus twist and icy finish.", price: null },
-        { name: "Mix Berry Popa", desc: "Triple berry blend bubbling over ice — cranberry, blueberry and blackberry.", price: null },
-        { name: "Mango Passion Popa", desc: "Tropical sparkling mango and passion fruit — golden and refreshing.", price: null },
+        { name: "Pink Popa", desc: "Sweet fizzy pink cocktail rich with strawberry syrup and crushed ice.", price: "125" },
+        { name: "Blue Pupls", desc: "Electric blue sparkling drink with a citrus twist and icy finish.", price: "130" },
+        { name: "Mix Berry Popa", desc: "Triple berry blend bubbling over ice — cranberry, blueberry and blackberry.", price: "140" },
+        { name: "Mango Passion Popa", desc: "Tropical sparkling mango and passion fruit — golden and refreshing.", price: "150" },
       ]
     },
     {
@@ -124,14 +124,14 @@ const MENU_DATA = {
       tagline: "Chilled. Refreshing. Signature.",
       emoji: "🧊",
       items: [
-        { name: "California Cocktail", desc: "Signature house cocktail with mixed fruit flavors, served over crushed ice.", price: "66.99" },
-        { name: "Mojito", desc: "Classic mint and lemon mojito with crushed ice and a splash of soda.", price: "59.99" },
-        { name: "Mojito Flavor", desc: "Choose your favorite fruit flavor blended into a refreshing mojito.", price: "59.99" },
-        { name: "Ice Latte", desc: "Smooth espresso poured over ice and cold milk.", price: null },
-        { name: "Ice Mocha", desc: "Rich chocolate and espresso blend with ice and cold milk.", price: null },
-        { name: "Ice Americano", desc: "Strong espresso shots topped with cold water and ice.", price: null },
-        { name: "Ice White Mocha", desc: "Creamy white chocolate with espresso, served over ice.", price: null },
-        { name: "Ice Spanish Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: null },
+        { name: "California Cocktail", desc: "Signature house cocktail with mixed fruit flavors, served over crushed ice.", price: "90" },
+        { name: "Mojito", desc: "Classic mint and lemon mojito with crushed ice and a splash of soda.", price: "80" },
+        { name: "Mojito Flavor", desc: "Choose your favorite fruit flavor blended into a refreshing mojito.", price: "90" },
+        { name: "Ice Latte", desc: "Smooth espresso poured over ice and cold milk.", price: "100" },
+        { name: "Ice Mocha", desc: "Rich chocolate and espresso blend with ice and cold milk.", price: "140" },
+        { name: "Ice Americano", desc: "Strong espresso shots topped with cold water and ice.", price: "80" },
+        { name: "Ice White Mocha", desc: "Creamy white chocolate with espresso, served over ice.", price: "145" },
+        { name: "Ice Spanish Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "120" },
         { name: "Ice Matcha", desc: "Premium green matcha whisked with cold milk over ice.", price: null },
         { name: "Ice Matcha Strawberry", desc: "Vibrant matcha blended with sweet strawberry and cold milk.", price: null },
       ]
@@ -142,15 +142,15 @@ const MENU_DATA = {
       tagline: "Cold-Pressed, Naturally Sweet",
       emoji: "🍊",
       items: [
-        { name: "Watermelon", desc: "Refreshing watermelon juice, freshly squeezed and chilled.", price: null },
-        { name: "Kiwi", desc: "Vibrant kiwi juice with a tangy flavor and bright green color.", price: null },
-        { name: "Mango", desc: "Velvety mango juice bursting with tropical sweetness.", price: null },
-        { name: "Strawberry", desc: "Lush strawberry blend with a touch of natural sweetness.", price: null },
-        { name: "Guava", desc: "Tropical guava juice with a smooth, fragrant flavor.", price: null },
-        { name: "Orange", desc: "Fresh orange juice with a refreshing citrus flavor.", price: null },
-        { name: "Banana", desc: "Creamy banana juice, smooth and naturally sweet.", price: null },
-        { name: "Lemon", desc: "Refreshing lemon juice with a tangy bite and crisp finish.", price: null },
-        { name: "Lemon Mint", desc: "Cold lemon and fresh mint — incredibly refreshing.", price: null },
+        { name: "Watermelon", desc: "Refreshing watermelon juice, freshly squeezed and chilled.", price: "85" },
+        { name: "Kiwi", desc: "Vibrant kiwi juice with a tangy flavor and bright green color.", price: "110" },
+        { name: "Mango", desc: "Velvety mango juice bursting with tropical sweetness.", price: "90" },
+        { name: "Strawberry", desc: "Lush strawberry blend with a touch of natural sweetness.", price: "85" },
+        { name: "Guava", desc: "Tropical guava juice with a smooth, fragrant flavor.", price: "85" },
+        { name: "Orange", desc: "Fresh orange juice with a refreshing citrus flavor.", price: "85" },
+        { name: "Banana", desc: "Creamy banana juice, smooth and naturally sweet.", price: "85" },
+        { name: "Lemon", desc: "Refreshing lemon juice with a tangy bite and crisp finish.", price: "85" },
+        { name: "Lemon Mint", desc: "Cold lemon and fresh mint — incredibly refreshing.", price: "85" },
       ]
     },
     {
@@ -159,15 +159,15 @@ const MENU_DATA = {
       tagline: "Blended Fresh Fruit, Thick and Creamy",
       emoji: "🥤",
       items: [
-        { name: "Watermelon Smoothie", desc: "Cold blended watermelon — refreshing and hydrating.", price: null },
-        { name: "Kiwi Smoothie", desc: "Fresh kiwi blend with a tangy flavor, thick and smooth.", price: null },
-        { name: "Mango Smoothie", desc: "Rich golden mango blended with cream.", price: null },
-        { name: "Strawberry Smoothie", desc: "Ripe sweet strawberries blended fresh.", price: null },
-        { name: "Guava Smoothie", desc: "Thick and fragrant tropical guava blend.", price: null },
-        { name: "Orange Smoothie", desc: "Fresh oranges with a creamy blended taste.", price: null },
-        { name: "Banana Smoothie", desc: "Ripe creamy banana blended thick and smooth.", price: null },
-        { name: "Lemon Mint Smoothie", desc: "Cold lemon and fresh mint blended together.", price: null },
-        { name: "Lemon Smoothie", desc: "Refreshing lemon blended cold.", price: null },
+        { name: "Watermelon Smoothie", desc: "Cold blended watermelon — refreshing and hydrating.", price: "130" },
+        { name: "Kiwi Smoothie", desc: "Fresh kiwi blend with a tangy flavor, thick and smooth.", price: "130" },
+        { name: "Mango Smoothie", desc: "Rich golden mango blended with cream.", price: "130" },
+        { name: "Strawberry Smoothie", desc: "Ripe sweet strawberries blended fresh.", price: "130" },
+        { name: "Guava Smoothie", desc: "Thick and fragrant tropical guava blend.", price: "130" },
+        { name: "Orange Smoothie", desc: "Fresh oranges with a creamy blended taste.", price: "130" },
+        { name: "Banana Smoothie", desc: "Ripe creamy banana blended thick and smooth.", price: "130" },
+        { name: "Lemon Mint Smoothie", desc: "Cold lemon and fresh mint blended together.", price: "100" },
+        { name: "Lemon Smoothie", desc: "Refreshing lemon blended cold.", price: "130" },
       ]
     },
     {
@@ -176,12 +176,12 @@ const MENU_DATA = {
       tagline: "Classic Creamy Blends",
       emoji: "🍦",
       items: [
-        { name: "Vanilla Shake", desc: "Classic creamy vanilla milkshake blended with rich ice cream and cold milk.", price: null },
-        { name: "Caramel Shake", desc: "Butter caramel blended with vanilla ice cream, topped with golden caramel sauce.", price: null },
-        { name: "Chocolate Shake", desc: "Rich chocolate milkshake blended with cocoa, ice cream and chocolate drizzle.", price: null },
-        { name: "Mango Shake", desc: "Tropical mango blend with creamy ice cream for a smooth fruity treat.", price: null },
-        { name: "Strawberry Shake", desc: "Fresh strawberries blended with vanilla ice cream and a touch of milk.", price: null },
-        { name: "Oreo Shake", desc: "Crushed Oreos blended with vanilla ice cream, topped with whipped cream.", price: null },
+        { name: "Vanilla Shake", desc: "Classic creamy vanilla milkshake blended with rich ice cream and cold milk.", price: "90" },
+        { name: "Caramel Shake", desc: "Butter caramel blended with vanilla ice cream, topped with golden caramel sauce.", price: "130" },
+        { name: "Chocolate Shake", desc: "Rich chocolate milkshake blended with cocoa, ice cream and chocolate drizzle.", price: "100" },
+        { name: "Mango Shake", desc: "Tropical mango blend with creamy ice cream for a smooth fruity treat.", price: "100" },
+        { name: "Strawberry Shake", desc: "Fresh strawberries blended with vanilla ice cream and a touch of milk.", price: "90" },
+        { name: "Oreo Shake", desc: "Crushed Oreos blended with vanilla ice cream, topped with whipped cream.", price: "100" },
       ]
     },
     {
@@ -190,13 +190,13 @@ const MENU_DATA = {
       tagline: "Blended, Icy, and Indulgent",
       emoji: "☕",
       items: [
-        { name: "Frappe Mocha", desc: "Iced mocha blended with espresso, chocolate and whipped cream.", price: null },
-        { name: "Frappuccino", desc: "Signature iced coffee blended with milk, ice and topped with whipped cream.", price: null },
+        { name: "Frappe Mocha", desc: "Iced mocha blended with espresso, chocolate and whipped cream.", price: "190" },
+        { name: "Frappuccino", desc: "Signature iced coffee blended with milk, ice and topped with whipped cream.", price: "110" },
         { name: "Frappe Vanilla", desc: "Creamy vanilla frappuccino blended with milk, ice and a swirl of whipped cream.", price: null },
       ]
     },
   ]
-};
+};  
 
 // ─── IMAGES ───────────────────────────────────────────────────────────────────
 const CATEGORY_IMAGES = {
@@ -428,14 +428,14 @@ function CategoryCard({ category, onClick, index }) {
 function ItemCard({ item, categoryId, index }) {
   const [active, setActive] = useState(false);
   const [visible, setVisible] = useState(false);
-
+ 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), index * 55);
     return () => clearTimeout(t);
   }, [index]);
-
+ 
   const hasPrice = item.price && item.price !== "--" && item.price !== "—";
-
+ 
   return (
     <div
       onMouseEnter={() => setActive(true)}
@@ -463,7 +463,7 @@ function ItemCard({ item, categoryId, index }) {
         transition: "opacity 0.25s",
         zIndex: 2,
       }} />
-
+ 
       {/* Image */}
       <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
         <img
@@ -482,7 +482,7 @@ function ItemCard({ item, categoryId, index }) {
           position: "absolute", inset: 0,
           background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%)",
         }} />
-        {hasPrice && (
+        {hasPrice ? (
           <div style={{
             position: "absolute", bottom: 0, right: 0,
             background: "#D91F26",
@@ -492,9 +492,29 @@ function ItemCard({ item, categoryId, index }) {
           }}>
             EGP {item.price}
           </div>
+        ) : (
+          /* Blurred COMING SOON overlay on image */
+          <div style={{
+            position: "absolute", inset: 0,
+            display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+            background: "rgba(0,0,0,0.45)",
+            zIndex: 3,
+          }}>
+            <div style={{
+              color: "#FFFFFF", fontFamily: "Georgia,serif",
+              fontWeight: "bold", fontSize: "clamp(13px,4vw,16px)",
+              letterSpacing: "clamp(2px,1.5vw,5px)",
+              textTransform: "uppercase", textAlign: "center",
+              textShadow: "0 2px 12px rgba(0,0,0,0.9)",
+            }}>COMING SOON</div>
+            <div style={{ width: 36, height: 2, background: "#D91F26", marginTop: 7 }} />
+          </div>
         )}
       </div>
-
+ 
       {/* Text */}
       <div style={{ padding: "12px 14px 14px 16px" }}>
         <div style={{
@@ -506,14 +526,6 @@ function ItemCard({ item, categoryId, index }) {
           color: "#999999", fontFamily: "system-ui,sans-serif",
           fontSize: "clamp(12px,3.2vw,13px)", lineHeight: 1.55,
         }}>{item.desc}</div>
-        {!hasPrice && (
-          <div style={{
-            display: "inline-block", marginTop: 10,
-            color: "#FFFFFF", background: "#D91F26",
-            fontFamily: "system-ui,sans-serif", fontSize: 10,
-            fontWeight: 700, letterSpacing: 1.5, padding: "4px 9px",
-          }}>ASK FOR PRICE</div>
-        )}
       </div>
     </div>
   );
@@ -522,12 +534,12 @@ function ItemCard({ item, categoryId, index }) {
 // ─── CATEGORY DETAIL PAGE ──────────────────────────────────────────────────────
 function CategoryPage({ category, onBack }) {
   const [visible, setVisible] = useState(false);
-
+ 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 60);
     return () => clearTimeout(t);
   }, []);
-
+ 
   return (
     <div className="safe-bottom" style={{
       minHeight: "100vh", background: "#000000", paddingBottom: 60,
@@ -548,7 +560,7 @@ function CategoryPage({ category, onBack }) {
           position: "absolute", inset: 0,
           background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 65%, #000000 100%)",
         }} />
-
+ 
         {/* Back button — large touch target */}
         <button
           onClick={onBack}
@@ -572,7 +584,7 @@ function CategoryPage({ category, onBack }) {
         >
           ← BACK
         </button>
-
+ 
         {/* Title */}
         <div style={{
           position: "absolute", bottom: 14, left: 0, right: 0,
@@ -597,7 +609,7 @@ function CategoryPage({ category, onBack }) {
           </div>
         </div>
       </div>
-
+ 
       {/* Items */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "20px 12px" }}>
         <div
