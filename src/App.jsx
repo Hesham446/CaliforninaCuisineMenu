@@ -52,7 +52,7 @@ const MENU_DATA = {
       emoji: "🍔",
       items: [
         { name: "Classic Burger", desc: "Beef patty, lettuce, tomato, pickles, classic sauce, served with fries.", price: "134.99" },
-        { name: "Cheese Burger", desc: "Beef patty, melted cheddar, lettuce, tomato, pickles, served with fries.", price: "159.99 },
+        { name: "Cheese Burger", desc: "Beef patty, melted cheddar, lettuce, tomato, pickles, served with fries.", price: "159.99" },
         { name: "California Premium", desc: "Double beef, double cheese, caramelized onion, signature sauce, fries.", price: "179.99" },
         { name: "Spicy Burger", desc: "Beef patty, jalapeños, pepper jack, spicy mayo, served with fries.", price: "139.99" },
         { name: "Chicken Crispy", desc: "Crispy fried chicken, lettuce, pickles, ranch, served with fries.", price: "134.99" },
