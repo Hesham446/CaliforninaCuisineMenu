@@ -18,14 +18,14 @@ const MENU_DATA = {
       emoji: "🍝",
       items: [
         { name: "Texas Alfredo", desc: "Fettuccine in rich creamy white sauce with grilled chicken, mushrooms & parmesan, served with garlic bread.", price: "120" },
-        { name: "Arrabiatta Pasta", desc: "Spicy red tomato sauce with chilli peppers, garlic and fresh basil.", price: "130" },
+        { name: "Arrabiatta Pasta", desc: "Spicy red tomato sauce with chilli peppers, garlic and fresh basil.", price: "79.99" },
         { name: "Shrimp Pasta", desc: "Delicious shrimp in a rich rose sauce with parmesan.", price: "190" },
         { name: "Spicy Chicken Ranch", desc: "Grilled chicken in creamy ranch sauce with a spicy kick.", price: "150" },
-        { name: "California Pasta", desc: "Our signature house pasta with mixed vegetables and herbs.", price: "120" },
+        { name: "California Pasta", desc: "Our signature house pasta with mixed vegetables and herbs.", price: "220" },
         { name: "Spaghetti Bolognese", desc: "Classic pasta with rich beef Bolognese sauce.", price: "110" },
         { name: "Mac & Cheese", desc: "Creamy triple-cheese pasta, golden baked.", price: "150" },
-        { name: "Nigresco Pasta", desc: "Black squid-ink pasta with a seafood medley.", price: null },
-        { name: "Pesto Chicken", desc: "Grilled chicken in fresh basil pesto sauce.", price: "100" },
+        { name: "Nigresco Pasta", desc: "Black squid-ink pasta with a seafood medley.", price: "140" },
+        { name: "Pesto Chicken", desc: "Grilled chicken in fresh basil pesto sauce.", price: "130" },
       ]
     },
     {
@@ -35,11 +35,11 @@ const MENU_DATA = {
       emoji: "🍕",
       items: [
         { name: "Margherita", desc: "Classic tomato, fresh mozzarella, basil, extra-virgin olive oil.", price: "119.99" },
-        { name: "Chicken BBQ", desc: "Grilled chicken, red onion, mozzarella, smoky BBQ sauce.", price: "179.99" },
+        { name: "Chicken BBQ", desc: "Grilled chicken, red onion, mozzarella, smoky BBQ sauce.", price: "169.99" },
         { name: "Tuna", desc: "Tuna flakes, red onion, olives, mozzarella, tomato sauce.", price: "139.99" },
-        { name: "Chicken Ranch", desc: "Grilled chicken, ranch sauce, mushrooms, mozzarella, herbs.", price: "179.99" },
-        { name: "Shrimp", desc: "Garlic shrimp, mozzarella, fresh herbs, white sauce.", price: "189.90" },
-        { name: "Vegetable", desc: "Bell peppers, mushrooms, onion, olives, mozzarella, tomato.", price: "144.00" },
+        { name: "Chicken Ranch", desc: "Grilled chicken, ranch sauce, mushrooms, mozzarella, herbs.", price: "169.99" },
+        { name: "Shrimp", desc: "Garlic shrimp, mozzarella, fresh herbs, white sauce.", price: "189.99" },
+        { name: "Vegetable", desc: "Bell peppers, mushrooms, onion, olives, mozzarella, tomato.", price: "144.99" },
         { name: "Super Supreme", desc: "Pepperoni, beef, peppers, mushrooms, onion, olives.", price: "179.99" },
         { name: "Mix Cheese", desc: "Blend of four cheeses — mozzarella, cheddar, parmesan, feta.", price: "149.99" },
         { name: "Pepperoni", desc: "Classic pepperoni, mozzarella, tomato sauce, oregano.", price: "159.99" },
@@ -54,7 +54,7 @@ const MENU_DATA = {
         { name: "Classic Burger", desc: "Beef patty, lettuce, tomato, pickles, classic sauce, served with fries.", price: "134.99" },
         { name: "Cheese Burger", desc: "Beef patty, melted cheddar, lettuce, tomato, pickles, served with fries.", price: "159.99" },
         { name: "California Premium", desc: "Double beef, double cheese, caramelized onion, signature sauce, fries.", price: "179.99" },
-        { name: "Spicy Burger", desc: "Beef patty, jalapeños, pepper jack, spicy mayo, served with fries.", price: "139.99" },
+        { name: "Spicy Burger", desc: "Beef patty, jalapeños, pepper jack, spicy mayo, served with fries.", price: "149.99" },
         { name: "Chicken Crispy", desc: "Crispy fried chicken, lettuce, pickles, ranch, served with fries.", price: "134.99" },
       ]
     },
@@ -64,10 +64,10 @@ const MENU_DATA = {
       tagline: "Grilled Fresh, Served Right",
       emoji: "🥗",
       items: [
-        { name: "Herb Grilled Chicken", desc: "Marinated chicken breast, fresh herbs, olive oil, grilled to perfection.", price: "124.99" },
+        { name: "Herb Grilled Chicken", desc: "Marinated chicken breast, fresh herbs, olive oil, grilled to perfection.", price: "139.99" },
         { name: "Chicken & Shrimps", desc: "Grilled chicken and jumbo shrimp with garlic butter sauce.", price: "159.99" },
-        { name: "Grilled Salmon", desc: "Atlantic salmon fillet, lemon butter, fresh herbs.", price: "189.99" },
-        { name: "Fillet Grilled", desc: "Premium beef, pepper sauce, grilled vegetables.", price: "219.99" },
+        { name: "Grilled Salmon", desc: "Atlantic salmon fillet, lemon butter, fresh herbs.", price: "449.99" },
+        { name: "Fillet Grilled", desc: "Premium beef, pepper sauce, grilled vegetables.", price: "179.99" },
       ]
     },
     {
@@ -76,10 +76,10 @@ const MENU_DATA = {
       tagline: "Crispy. Golden. Irresistible.",
       emoji: "🍟",
       items: [
-        { name: "Original Chips", desc: "Seasoned crispy fries served with two signature dipping sauces.", price: "22.99" },
-        { name: "Chicken Chips", desc: "Crispy chicken strips with seasoned fries and assorted sauces.", price: "22.99" },
-        { name: "Fish & Chips", desc: "Beer-battered cod fillet with golden fries and tartar sauce.", price: "19.99" },
-        { name: "Tix Mix Chips", desc: "Loaded fries stuffed with chicken, cheese sauce and premium toppings.", price: "22.99" },
+        { name: "Original Chips", desc: "Seasoned crispy fries served with two signature dipping sauces.", price: "49.99" },
+        { name: "Chicken Chips", desc: "Crispy chicken strips with seasoned fries and assorted sauces.", price: "79.99" },
+        { name: "Fish & Chips", desc: "Beer-battered cod fillet with golden fries and tartar sauce.", price: "69.99" },
+        { name: "Tix Mix Chips", desc: "Loaded fries stuffed with chicken, cheese sauce and premium toppings.", price: "89.99" },
       ]
     },
     {
@@ -88,10 +88,10 @@ const MENU_DATA = {
       tagline: "Small. Great. Fun.",
       emoji: "🧒",
       items: [
-        { name: "Spaghetti Bolognese", desc: "Small portion of spaghetti mixed with rich beef Bolognese, topped with parmesan.", price: null },
-        { name: "Chicken Fingers", desc: "Golden crispy chicken pieces with a side of fries and ketchup.", price: null },
-        { name: "Mini Burger", desc: "Small cheeseburger on soft brioche with beef patty, cheddar and pickles.", price: null },
-        { name: "Mini Pizza", desc: "Small pizza with tomato, mozzarella and a sprinkle of fresh basil.", price: null },
+        { name: "Spaghetti Bolognese", desc: "Small portion of spaghetti mixed with rich beef Bolognese, topped with parmesan.", price: "59.99" },
+        { name: "Chicken Fingers", desc: "Golden crispy chicken pieces with a side of fries and ketchup.", price: "69.99" },
+        { name: "Mini Burger", desc: "Small cheeseburger on soft brioche with beef patty, cheddar and pickles.", price: "79.99" },
+        { name: "Mini Pizza", desc: "Small pizza with tomato, mozzarella and a sprinkle of fresh basil.", price: "59.99" },
       ]
     },
     {
@@ -112,10 +112,10 @@ const MENU_DATA = {
       tagline: "Sparkling & Vibrant",
       emoji: "🫧",
       items: [
-        { name: "Pink Popa", desc: "Sweet fizzy pink cocktail rich with strawberry syrup and crushed ice.", price: "125" },
-        { name: "Blue Pupls", desc: "Electric blue sparkling drink with a citrus twist and icy finish.", price: "130" },
-        { name: "Mix Berry Popa", desc: "Triple berry blend bubbling over ice — cranberry, blueberry and blackberry.", price: "140" },
-        { name: "Mango Passion Popa", desc: "Tropical sparkling mango and passion fruit — golden and refreshing.", price: "150" },
+        { name: "Pink Popa", desc: "Sweet fizzy pink cocktail rich with strawberry syrup and crushed ice.", price: "124.99" },
+        { name: "Blue Pupls", desc: "Electric blue sparkling drink with a citrus twist and icy finish.", price: "129.99" },
+        { name: "Mix Berry Popa", desc: "Triple berry blend bubbling over ice — cranberry, blueberry and blackberry.", price: "139.99" },
+        { name: "Mango Passion Popa", desc: "Tropical sparkling mango and passion fruit — golden and refreshing.", price: "149.99" },
       ]
     },
     {
@@ -133,7 +133,9 @@ const MENU_DATA = {
         { name: "Ice White Mocha", desc: "Creamy white chocolate with espresso, served over ice.", price: "145" },
         { name: "Ice Spanish Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "120" },
         { name: "Ice Matcha", desc: "Premium green matcha whisked with cold milk over ice.", price: null },
-        { name: "Ice Matcha Strawberry", desc: "Vibrant matcha blended with sweet strawberry and cold milk.", price: null },
+        { name: "Ice Matcha Strawberry", desc: "Vibrant matcha blended with sweet strawberry and cold milk.", price: "149.99"},
+         { name: "Ice Salted Caramel Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "129.99" },
+         { name: "Ice Caramel Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "119.99" },
       ]
     },
     {
@@ -192,7 +194,7 @@ const MENU_DATA = {
       items: [
         { name: "Frappe Mocha", desc: "Iced mocha blended with espresso, chocolate and whipped cream.", price: "190" },
         { name: "Frappuccino", desc: "Signature iced coffee blended with milk, ice and topped with whipped cream.", price: "110" },
-        { name: "Frappe Vanilla", desc: "Creamy vanilla frappuccino blended with milk, ice and a swirl of whipped cream.", price: null },
+        { name: "Frappe Vanilla", desc: "Creamy vanilla frappuccino blended with milk, ice and a swirl of whipped cream.", price: "119..99" },
       ]
     },
   ]
