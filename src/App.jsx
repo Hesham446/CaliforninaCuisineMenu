@@ -132,7 +132,7 @@ const MENU_DATA = {
         { name: "Ice Americano", desc: "Strong espresso shots topped with cold water and ice.", price: "80" },
         { name: "Ice White Mocha", desc: "Creamy white chocolate with espresso, served over ice.", price: "145" },
         { name: "Ice Spanish Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "120" },
-        { name: "Ice Matcha", desc: "Premium green matcha whisked with cold milk over ice.", price: null },
+        { name: "Ice Matcha", desc: "Premium green matcha whisked with cold milk over ice.", price: "135" },
         { name: "Ice Matcha Strawberry", desc: "Vibrant matcha blended with sweet strawberry and cold milk.", price: "149.99"},
          { name: "Ice Salted Caramel Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "129.99" },
          { name: "Ice Caramel Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "119.99" },
