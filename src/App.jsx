@@ -8,24 +8,55 @@ import logo from "./assets/Photo/Logo/logo.png";
 // #CCCCCC — secondary text (light grey)
 // #999999 — muted text (mid grey)
 
+// ─── IMAGE PATH HELPER ────────────────────────────────────────────────────────
+// Converts a menu item name to its local image path.
+// Example: "Texas Alfredo" → "/foods/texas-alfredo.jpg"
+//          "Mac & Cheese"  → "/foods/mac-and-cheese.jpg"
+const getImagePath = (name) => {
+  const slug = name
+    .toLowerCase()
+    .replace(/&/g, "and")          // & → and
+    .replace(/[^a-z0-9\s-]/g, "") // remove special chars (keep hyphens)
+    .trim()
+    .replace(/\s+/g, "-");         // spaces → hyphens
+  return `/foods/${slug}.jpg`;
+};
+
+// Category fallback images (used when no item-specific local image is found)
+const CATEGORY_IMAGES = {
+  pasta:        "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800&q=80",
+  pizza:        "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80",
+  burgers:      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80",
+  healthy:      "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&q=80",
+  chips:        "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&q=80",
+  kids:         "https://images.unsplash.com/photo-1563379091339-03246963d7d3?w=800&q=80",
+  compo:        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
+  popa:         "https://images.unsplash.com/photo-1543253687-c931c8e01820?w=800&q=80",
+  "ice-drinks": "https://images.unsplash.com/photo-1587080413959-06b859fb107d?w=800&q=80",
+  "fresh-juice":"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=800&q=80",
+  smoothies:    "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=800&q=80",
+  milkshakes:   "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=800&q=80",
+  frappes:      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&q=80",
+};
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const MENU_DATA = {
-   categories: [
+  categories: [
     {
       id: "pasta",
       name: "Pasta",
       tagline: "Handmade Italian Classics",
       emoji: "🍝",
       items: [
-        { name: "Texas Alfredo", desc: "Fettuccine in rich creamy white sauce with grilled chicken, mushrooms & parmesan, served with garlic bread.", price: "120" },
-        { name: "Arrabiatta Pasta", desc: "Spicy red tomato sauce with chilli peppers, garlic and fresh basil.", price: "79.99" },
-        { name: "Shrimp Pasta", desc: "Delicious shrimp in a rich rose sauce with parmesan.", price: "190" },
-        { name: "Spicy Chicken Ranch", desc: "Grilled chicken in creamy ranch sauce with a spicy kick.", price: "150" },
-        { name: "California Pasta", desc: "Our signature house pasta with mixed vegetables and herbs.", price: "220" },
-        { name: "Spaghetti Bolognese", desc: "Classic pasta with rich beef Bolognese sauce.", price: "110" },
-        { name: "Mac & Cheese", desc: "Creamy triple-cheese pasta, golden baked.", price: "150" },
-        { name: "Nigresco Pasta", desc: "Black squid-ink pasta with a seafood medley.", price: "140" },
-        { name: "Pesto Chicken", desc: "Grilled chicken in fresh basil pesto sauce.", price: "130" },
+        { name: "Texas Alfredo",      desc: "Fettuccine in rich creamy white sauce with grilled chicken, mushrooms & parmesan, served with garlic bread.", price: "120" },
+        { name: "Arrabiatta Pasta",   desc: "Spicy red tomato sauce with chilli peppers, garlic and fresh basil.", price: "79.99" },
+        { name: "Shrimp Pasta",       desc: "Delicious shrimp in a rich rose sauce with parmesan.", price: "190" },
+        { name: "Spicy Chicken Ranch",desc: "Grilled chicken in creamy ranch sauce with a spicy kick.", price: "150" },
+        { name: "California Pasta",   desc: "Our signature house pasta with mixed vegetables and herbs.", price: "220" },
+        { name: "Spaghetti Bolognese",desc: "Classic pasta with rich beef Bolognese sauce.", price: "110" },
+        { name: "Mac & Cheese",       desc: "Creamy triple-cheese pasta, golden baked.", price: "150" },
+        { name: "Nigresco Pasta",     desc: "Black squid-ink pasta with a seafood medley.", price: "140" },
+        { name: "Pesto Chicken",      desc: "Grilled chicken in fresh basil pesto sauce.", price: "130" },
       ]
     },
     {
@@ -34,15 +65,15 @@ const MENU_DATA = {
       tagline: "Hand-Tossed, Stone Baked",
       emoji: "🍕",
       items: [
-        { name: "Margherita", desc: "Classic tomato, fresh mozzarella, basil, extra-virgin olive oil.", price: "119.99" },
-        { name: "Chicken BBQ", desc: "Grilled chicken, red onion, mozzarella, smoky BBQ sauce.", price: "169.99" },
-        { name: "Tuna", desc: "Tuna flakes, red onion, olives, mozzarella, tomato sauce.", price: "139.99" },
-        { name: "Chicken Ranch", desc: "Grilled chicken, ranch sauce, mushrooms, mozzarella, herbs.", price: "169.99" },
-        { name: "Shrimp", desc: "Garlic shrimp, mozzarella, fresh herbs, white sauce.", price: "189.99" },
-        { name: "Vegetable", desc: "Bell peppers, mushrooms, onion, olives, mozzarella, tomato.", price: "144.99" },
-        { name: "Super Supreme", desc: "Pepperoni, beef, peppers, mushrooms, onion, olives.", price: "179.99" },
-        { name: "Mix Cheese", desc: "Blend of four cheeses — mozzarella, cheddar, parmesan, feta.", price: "149.99" },
-        { name: "Pepperoni", desc: "Classic pepperoni, mozzarella, tomato sauce, oregano.", price: "159.99" },
+        { name: "Margherita",   desc: "Classic tomato, fresh mozzarella, basil, extra-virgin olive oil.", price: "119.99" },
+        { name: "Chicken BBQ",  desc: "Grilled chicken, red onion, mozzarella, smoky BBQ sauce.", price: "169.99" },
+        { name: "Tuna",         desc: "Tuna flakes, red onion, olives, mozzarella, tomato sauce.", price: "139.99" },
+        { name: "Chicken Ranch",desc: "Grilled chicken, ranch sauce, mushrooms, mozzarella, herbs.", price: "169.99" },
+        { name: "Shrimp",       desc: "Garlic shrimp, mozzarella, fresh herbs, white sauce.", price: "189.99" },
+        { name: "Vegetable",    desc: "Bell peppers, mushrooms, onion, olives, mozzarella, tomato.", price: "144.99" },
+        { name: "Super Supreme",desc: "Pepperoni, beef, peppers, mushrooms, onion, olives.", price: "179.99" },
+        { name: "Mix Cheese",   desc: "Blend of four cheeses — mozzarella, cheddar, parmesan, feta.", price: "149.99" },
+        { name: "Pepperoni",    desc: "Classic pepperoni, mozzarella, tomato sauce, oregano.", price: "159.99" },
       ]
     },
     {
@@ -51,11 +82,11 @@ const MENU_DATA = {
       tagline: "Flame Grilled",
       emoji: "🍔",
       items: [
-        { name: "Classic Burger", desc: "Beef patty, lettuce, tomato, pickles, classic sauce, served with fries.", price: "134.99" },
-        { name: "Cheese Burger", desc: "Beef patty, melted cheddar, lettuce, tomato, pickles, served with fries.", price: "159.99" },
+        { name: "Classic Burger",     desc: "Beef patty, lettuce, tomato, pickles, classic sauce, served with fries.", price: "134.99" },
+        { name: "Cheese Burger",      desc: "Beef patty, melted cheddar, lettuce, tomato, pickles, served with fries.", price: "159.99" },
         { name: "California Premium", desc: "Double beef, double cheese, caramelized onion, signature sauce, fries.", price: "179.99" },
-        { name: "Spicy Burger", desc: "Beef patty, jalapeños, pepper jack, spicy mayo, served with fries.", price: "149.99" },
-        { name: "Chicken Crispy", desc: "Crispy fried chicken, lettuce, pickles, ranch, served with fries.", price: "134.99" },
+        { name: "Spicy Burger",       desc: "Beef patty, jalapeños, pepper jack, spicy mayo, served with fries.", price: "149.99" },
+        { name: "Chicken Crispy",     desc: "Crispy fried chicken, lettuce, pickles, ranch, served with fries.", price: "134.99" },
       ]
     },
     {
@@ -64,10 +95,10 @@ const MENU_DATA = {
       tagline: "Grilled Fresh, Served Right",
       emoji: "🥗",
       items: [
-        { name: "Herb Grilled Chicken", desc: "Marinated chicken breast, fresh herbs, olive oil, grilled to perfection.", price: "139.99" },
-        { name: "Chicken & Shrimps", desc: "Grilled chicken and jumbo shrimp with garlic butter sauce.", price: "159.99" },
-        { name: "Grilled Salmon", desc: "Atlantic salmon fillet, lemon butter, fresh herbs.", price: "449.99" },
-        { name: "Fillet Grilled", desc: "Premium beef, pepper sauce, grilled vegetables.", price: "179.99" },
+        { name: "Herb Grilled Chicken",desc: "Marinated chicken breast, fresh herbs, olive oil, grilled to perfection.", price: "139.99" },
+        { name: "Chicken & Shrimps",   desc: "Grilled chicken and jumbo shrimp with garlic butter sauce.", price: "159.99" },
+        { name: "Grilled Salmon",      desc: "Atlantic salmon fillet, lemon butter, fresh herbs.", price: "449.99" },
+        { name: "Fillet Grilled",      desc: "Premium beef, pepper sauce, grilled vegetables.", price: "179.99" },
       ]
     },
     {
@@ -76,9 +107,9 @@ const MENU_DATA = {
       tagline: "Crispy. Golden. Irresistible.",
       emoji: "🍟",
       items: [
-        { name: "Original Chips", desc: "Seasoned crispy fries served with two signature dipping sauces.", price: "49.99" },
+        { name: "Original Chips",desc: "Seasoned crispy fries served with two signature dipping sauces.", price: "49.99" },
         { name: "Chicken Chips", desc: "Crispy chicken strips with seasoned fries and assorted sauces.", price: "79.99" },
-        { name: "Fish & Chips", desc: "Beer-battered cod fillet with golden fries and tartar sauce.", price: "69.99" },
+        { name: "Fish & Chips",  desc: "Beer-battered cod fillet with golden fries and tartar sauce.", price: "69.99" },
         { name: "Tix Mix Chips", desc: "Loaded fries stuffed with chicken, cheese sauce and premium toppings.", price: "89.99" },
       ]
     },
@@ -88,10 +119,10 @@ const MENU_DATA = {
       tagline: "Small. Great. Fun.",
       emoji: "🧒",
       items: [
-        { name: "Spaghetti Bolognese", desc: "Small portion of spaghetti mixed with rich beef Bolognese, topped with parmesan.", price: "59.99" },
-        { name: "Chicken Fingers", desc: "Golden crispy chicken pieces with a side of fries and ketchup.", price: "69.99" },
-        { name: "Mini Burger", desc: "Small cheeseburger on soft brioche with beef patty, cheddar and pickles.", price: "79.99" },
-        { name: "Mini Pizza", desc: "Small pizza with tomato, mozzarella and a sprinkle of fresh basil.", price: "59.99" },
+        { name: "Spaghetti Bolognese",desc: "Small portion of spaghetti mixed with rich beef Bolognese, topped with parmesan.", price: "59.99" },
+        { name: "Chicken Fingers",    desc: "Golden crispy chicken pieces with a side of fries and ketchup.", price: "69.99" },
+        { name: "Mini Burger",        desc: "Small cheeseburger on soft brioche with beef patty, cheddar and pickles.", price: "79.99" },
+        { name: "Mini Pizza",         desc: "Small pizza with tomato, mozzarella and a sprinkle of fresh basil.", price: "59.99" },
       ]
     },
     {
@@ -100,10 +131,10 @@ const MENU_DATA = {
       tagline: "Shared Feasts for Every Occasion",
       emoji: "🍱",
       items: [
-        { name: "Crispy Chicken Compo", desc: "Crispy fried chicken sandwich with fries, coleslaw, and a refreshing Pepsi.", price: null },
-        { name: "Mix Compo", desc: "Sharing platter for two: assorted sandwiches, fries, sides, and two Pepsi drinks.", price: null },
-        { name: "Family Compo", desc: "Family feast with sandwiches, pizza, fries, sides, and four chilled drinks.", price: null },
-        { name: "California Compo", desc: "Perfect sharing experience: sandwiches, pizza, pasta, juices and milkshake for six.", price: null },
+        { name: "Crispy Chicken Compo",desc: "Crispy fried chicken sandwich with fries, coleslaw, and a refreshing Pepsi.", price: null },
+        { name: "Mix Compo",           desc: "Sharing platter for two: assorted sandwiches, fries, sides, and two Pepsi drinks.", price: null },
+        { name: "Family Compo",        desc: "Family feast with sandwiches, pizza, fries, sides, and four chilled drinks.", price: null },
+        { name: "California Compo",    desc: "Perfect sharing experience: sandwiches, pizza, pasta, juices and milkshake for six.", price: null },
       ]
     },
     {
@@ -112,10 +143,10 @@ const MENU_DATA = {
       tagline: "Sparkling & Vibrant",
       emoji: "🫧",
       items: [
-        { name: "Pink Popa", desc: "Sweet fizzy pink cocktail rich with strawberry syrup and crushed ice.", price: "124.99" },
-        { name: "Blue Pupls", desc: "Electric blue sparkling drink with a citrus twist and icy finish.", price: "129.99" },
-        { name: "Mix Berry Popa", desc: "Triple berry blend bubbling over ice — cranberry, blueberry and blackberry.", price: "139.99" },
-        { name: "Mango Passion Popa", desc: "Tropical sparkling mango and passion fruit — golden and refreshing.", price: "149.99" },
+        { name: "Pink Popa",        desc: "Sweet fizzy pink cocktail rich with strawberry syrup and crushed ice.", price: "124.99" },
+        { name: "Blue Pupls",       desc: "Electric blue sparkling drink with a citrus twist and icy finish.", price: "129.99" },
+        { name: "Mix Berry Popa",   desc: "Triple berry blend bubbling over ice — cranberry, blueberry and blackberry.", price: "139.99" },
+        { name: "Mango Passion Popa",desc: "Tropical sparkling mango and passion fruit — golden and refreshing.", price: "149.99" },
       ]
     },
     {
@@ -124,18 +155,18 @@ const MENU_DATA = {
       tagline: "Chilled. Refreshing. Signature.",
       emoji: "🧊",
       items: [
-        { name: "California Cocktail", desc: "Signature house cocktail with mixed fruit flavors, served over crushed ice.", price: "90" },
-        { name: "Mojito", desc: "Classic mint and lemon mojito with crushed ice and a splash of soda.", price: "80" },
-        { name: "Mojito Flavor", desc: "Choose your favorite fruit flavor blended into a refreshing mojito.", price: "90" },
-        { name: "Ice Latte", desc: "Smooth espresso poured over ice and cold milk.", price: "100" },
-        { name: "Ice Mocha", desc: "Rich chocolate and espresso blend with ice and cold milk.", price: "140" },
-        { name: "Ice Americano", desc: "Strong espresso shots topped with cold water and ice.", price: "80" },
-        { name: "Ice White Mocha", desc: "Creamy white chocolate with espresso, served over ice.", price: "145" },
-        { name: "Ice Spanish Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "120" },
-        { name: "Ice Matcha", desc: "Premium green matcha whisked with cold milk over ice.", price: "135" },
-        { name: "Ice Matcha Strawberry", desc: "Vibrant matcha blended with sweet strawberry and cold milk.", price: "149.99"},
-         { name: "Ice Salted Caramel Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "129.99" },
-         { name: "Ice Caramel Latte", desc: "Velvety condensed milk with espresso poured over ice.", price: "119.99" },
+        { name: "California Cocktail",    desc: "Signature house cocktail with mixed fruit flavors, served over crushed ice.", price: "90" },
+        { name: "Mojito",                 desc: "Classic mint and lemon mojito with crushed ice and a splash of soda.", price: "80" },
+        { name: "Mojito Flavor",          desc: "Choose your favorite fruit flavor blended into a refreshing mojito.", price: "90" },
+        { name: "Ice Latte",              desc: "Smooth espresso poured over ice and cold milk.", price: "100" },
+        { name: "Ice Mocha",              desc: "Rich chocolate and espresso blend with ice and cold milk.", price: "140" },
+        { name: "Ice Americano",          desc: "Strong espresso shots topped with cold water and ice.", price: "80" },
+        { name: "Ice White Mocha",        desc: "Creamy white chocolate with espresso, served over ice.", price: "145" },
+        { name: "Ice Spanish Latte",      desc: "Velvety condensed milk with espresso poured over ice.", price: "120" },
+        { name: "Ice Matcha",             desc: "Premium green matcha whisked with cold milk over ice.", price: "135" },
+        { name: "Ice Matcha Strawberry",  desc: "Vibrant matcha blended with sweet strawberry and cold milk.", price: "149.99" },
+        { name: "Ice Salted Caramel Latte",desc: "Salted caramel syrup with espresso and cold milk poured over ice.", price: "129.99" },
+        { name: "Ice Caramel Latte",      desc: "Buttery caramel with espresso and cold milk over ice.", price: "119.99" },
       ]
     },
     {
@@ -145,13 +176,13 @@ const MENU_DATA = {
       emoji: "🍊",
       items: [
         { name: "Watermelon", desc: "Refreshing watermelon juice, freshly squeezed and chilled.", price: "85" },
-        { name: "Kiwi", desc: "Vibrant kiwi juice with a tangy flavor and bright green color.", price: "110" },
-        { name: "Mango", desc: "Velvety mango juice bursting with tropical sweetness.", price: "90" },
+        { name: "Kiwi",       desc: "Vibrant kiwi juice with a tangy flavor and bright green color.", price: "110" },
+        { name: "Mango",      desc: "Velvety mango juice bursting with tropical sweetness.", price: "90" },
         { name: "Strawberry", desc: "Lush strawberry blend with a touch of natural sweetness.", price: "85" },
-        { name: "Guava", desc: "Tropical guava juice with a smooth, fragrant flavor.", price: "85" },
-        { name: "Orange", desc: "Fresh orange juice with a refreshing citrus flavor.", price: "85" },
-        { name: "Banana", desc: "Creamy banana juice, smooth and naturally sweet.", price: "85" },
-        { name: "Lemon", desc: "Refreshing lemon juice with a tangy bite and crisp finish.", price: "85" },
+        { name: "Guava",      desc: "Tropical guava juice with a smooth, fragrant flavor.", price: "85" },
+        { name: "Orange",     desc: "Fresh orange juice with a refreshing citrus flavor.", price: "85" },
+        { name: "Banana",     desc: "Creamy banana juice, smooth and naturally sweet.", price: "85" },
+        { name: "Lemon",      desc: "Refreshing lemon juice with a tangy bite and crisp finish.", price: "85" },
         { name: "Lemon Mint", desc: "Cold lemon and fresh mint — incredibly refreshing.", price: "85" },
       ]
     },
@@ -162,14 +193,14 @@ const MENU_DATA = {
       emoji: "🥤",
       items: [
         { name: "Watermelon Smoothie", desc: "Cold blended watermelon — refreshing and hydrating.", price: "130" },
-        { name: "Kiwi Smoothie", desc: "Fresh kiwi blend with a tangy flavor, thick and smooth.", price: "130" },
-        { name: "Mango Smoothie", desc: "Rich golden mango blended with cream.", price: "130" },
+        { name: "Kiwi Smoothie",       desc: "Fresh kiwi blend with a tangy flavor, thick and smooth.", price: "130" },
+        { name: "Mango Smoothie",      desc: "Rich golden mango blended with cream.", price: "130" },
         { name: "Strawberry Smoothie", desc: "Ripe sweet strawberries blended fresh.", price: "130" },
-        { name: "Guava Smoothie", desc: "Thick and fragrant tropical guava blend.", price: "130" },
-        { name: "Orange Smoothie", desc: "Fresh oranges with a creamy blended taste.", price: "130" },
-        { name: "Banana Smoothie", desc: "Ripe creamy banana blended thick and smooth.", price: "130" },
+        { name: "Guava Smoothie",      desc: "Thick and fragrant tropical guava blend.", price: "130" },
+        { name: "Orange Smoothie",     desc: "Fresh oranges with a creamy blended taste.", price: "130" },
+        { name: "Banana Smoothie",     desc: "Ripe creamy banana blended thick and smooth.", price: "130" },
         { name: "Lemon Mint Smoothie", desc: "Cold lemon and fresh mint blended together.", price: "100" },
-        { name: "Lemon Smoothie", desc: "Refreshing lemon blended cold.", price: "130" },
+        { name: "Lemon Smoothie",      desc: "Refreshing lemon blended cold.", price: "130" },
       ]
     },
     {
@@ -178,12 +209,12 @@ const MENU_DATA = {
       tagline: "Classic Creamy Blends",
       emoji: "🍦",
       items: [
-        { name: "Vanilla Shake", desc: "Classic creamy vanilla milkshake blended with rich ice cream and cold milk.", price: "90" },
-        { name: "Caramel Shake", desc: "Butter caramel blended with vanilla ice cream, topped with golden caramel sauce.", price: "130" },
+        { name: "Vanilla Shake",   desc: "Classic creamy vanilla milkshake blended with rich ice cream and cold milk.", price: "90" },
+        { name: "Caramel Shake",   desc: "Butter caramel blended with vanilla ice cream, topped with golden caramel sauce.", price: "130" },
         { name: "Chocolate Shake", desc: "Rich chocolate milkshake blended with cocoa, ice cream and chocolate drizzle.", price: "100" },
-        { name: "Mango Shake", desc: "Tropical mango blend with creamy ice cream for a smooth fruity treat.", price: "100" },
-        { name: "Strawberry Shake", desc: "Fresh strawberries blended with vanilla ice cream and a touch of milk.", price: "90" },
-        { name: "Oreo Shake", desc: "Crushed Oreos blended with vanilla ice cream, topped with whipped cream.", price: "100" },
+        { name: "Mango Shake",     desc: "Tropical mango blend with creamy ice cream for a smooth fruity treat.", price: "100" },
+        { name: "Strawberry Shake",desc: "Fresh strawberries blended with vanilla ice cream and a touch of milk.", price: "90" },
+        { name: "Oreo Shake",      desc: "Crushed Oreos blended with vanilla ice cream, topped with whipped cream.", price: "100" },
       ]
     },
     {
@@ -192,103 +223,20 @@ const MENU_DATA = {
       tagline: "Blended, Icy, and Indulgent",
       emoji: "☕",
       items: [
-        { name: "Frappe Mocha", desc: "Iced mocha blended with espresso, chocolate and whipped cream.", price: "190" },
-        { name: "Frappuccino", desc: "Signature iced coffee blended with milk, ice and topped with whipped cream.", price: "110" },
-        { name: "Frappe Vanilla", desc: "Creamy vanilla frappuccino blended with milk, ice and a swirl of whipped cream.", price: "119..99" },
+        { name: "Frappe Mocha",  desc: "Iced mocha blended with espresso, chocolate and whipped cream.", price: "190" },
+        { name: "Frappuccino",   desc: "Signature iced coffee blended with milk, ice and topped with whipped cream.", price: "110" },
+        { name: "Frappe Vanilla",desc: "Creamy vanilla frappuccino blended with milk, ice and a swirl of whipped cream.", price: "119.99" },
       ]
     },
   ]
-};  
-
-// ─── IMAGES ───────────────────────────────────────────────────────────────────
-const CATEGORY_IMAGES = {
-  pasta: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=800&q=80",
-  pizza: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80",
-  burgers: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80",
-  healthy: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&q=80",
-  chips: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&q=80",
-  kids: "https://images.unsplash.com/photo-1563379091339-03246963d7d3?w=800&q=80",
-  compo: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80",
-  popa: "https://images.unsplash.com/photo-1543253687-c931c8e01820?w=800&q=80",
-  "ice-drinks": "https://images.unsplash.com/photo-1587080413959-06b859fb107d?w=800&q=80",
-  "fresh-juice": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=800&q=80",
-  smoothies: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=800&q=80",
-  milkshakes: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=800&q=80",
-  frappes: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=800&q=80",
 };
-
-const ITEM_IMAGES = {
-  "Texas Alfredo": "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=600&q=80",
-  "Arrabiatta Pasta": "https://images.unsplash.com/photo-1608756687911-aa1599ab3bd9?w=600&q=80",
-  "Shrimp Pasta": "https://images.unsplash.com/photo-1673044709869-91f4e5e5e8f4?w=600&q=80",
-  "Spicy Chicken Ranch": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80",
-  "California Pasta": "https://images.unsplash.com/photo-1563379091339-03246963d7d3?w=600&q=80",
-  "Spaghetti Bolognese": "https://images.unsplash.com/photo-1551183053-bf91798d792c?w=600&q=80",
-  "Mac & Cheese": "https://images.unsplash.com/photo-1543352634-99a5d50ae78e?w=600&q=80",
-  "Nigresco Pasta": "https://images.unsplash.com/photo-1599948128020-9a44db9fcc6c?w=600&q=80",
-  "Pesto Chicken": "https://images.unsplash.com/photo-1641404764553-a43fb99c6e5e?w=600&q=80",
-  "Margherita": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80",
-  "Chicken BBQ": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
-  "Tuna": "https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=600&q=80",
-  "Chicken Ranch": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
-  "Shrimp": "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=600&q=80",
-  "Vegetable": "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=600&q=80",
-  "Super Supreme": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
-  "Mix Cheese": "https://images.unsplash.com/photo-1548369937-47519962c11a?w=600&q=80",
-  "Pepperoni": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=600&q=80",
-  "Classic Burger": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
-  "Cheese Burger": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&q=80",
-  "California Premium": "https://images.unsplash.com/photo-1550317138-10000687a72b?w=600&q=80",
-  "Spicy Burger": "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&q=80",
-  "Chicken Crispy": "https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&q=80",
-  "Herb Grilled Chicken": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80",
-  "Chicken & Shrimps": "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=600&q=80",
-  "Grilled Salmon": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&q=80",
-  "Fillet Grilled": "https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80",
-  "Original Chips": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&q=80",
-  "Chicken Chips": "https://images.unsplash.com/photo-1562967914-608f82629710?w=600&q=80",
-  "Fish & Chips": "https://images.unsplash.com/photo-1583835746434-cf1534674b41?w=600&q=80",
-  "Tix Mix Chips": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=600&q=80",
-  "Chicken Fingers": "https://images.unsplash.com/photo-1562967914-608f82629710?w=600&q=80",
-  "Mini Burger": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&q=80",
-  "Mini Pizza": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
-  "California Cocktail": "https://images.unsplash.com/photo-1543253687-c931c8e01820?w=600&q=80",
-  "Mojito": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80",
-  "Mojito Flavor": "https://images.unsplash.com/photo-1587824741298-2ac7cd94cde3?w=600&q=80",
-  "Ice Latte": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80",
-  "Ice Mocha": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80",
-  "Vanilla Shake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&q=80",
-  "Chocolate Shake": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&q=80",
-  "Strawberry Shake": "https://images.unsplash.com/photo-1553787485-60592ca1c2f5?w=600&q=80",
-  "Oreo Shake": "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=600&q=80",
-  "Watermelon Smoothie": "https://images.unsplash.com/photo-1587058680786-8e43b3793ed6?w=600&q=80",
-  "Mango Smoothie": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80",
-  "Strawberry Smoothie": "https://images.unsplash.com/photo-1553153303498-d5ef57db1823?w=600&q=80",
-  "Frappe Mocha": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&q=80",
-  "Frappuccino": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80",
-  "Orange": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&q=80",
-  "Mango": "https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80",
-  "Strawberry": "https://images.unsplash.com/photo-1615478503562-ec2d8aa0e24e?w=600&q=80",
-  "Lemon Mint": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80",
-  "Pink Popa": "https://images.unsplash.com/photo-1527661591475-527312dd65f5?w=600&q=80",
-  "Blue Pupls": "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=600&q=80",
-  "Crispy Chicken Compo": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",
-  "Family Compo": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",
-};
-
-const getImg = (name, catId) =>
-  ITEM_IMAGES[name] || CATEGORY_IMAGES[catId] || "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80";
 
 // ─── LOGO ─────────────────────────────────────────────────────────────────────
 const Logo = ({ size = 250 }) => (
   <img
     src={logo}
     alt="California Cuisine"
-    style={{
-      width: size,
-      height: size,
-      objectFit: "contain"
-    }}
+    style={{ width: size, height: size, objectFit: "contain" }}
   />
 );
 
@@ -298,9 +246,9 @@ function SplashScreen({ onDone }) {
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase("visible"), 100);
-    const t2 = setTimeout(() => setPhase("glow"), 600);
-    const t3 = setTimeout(() => setPhase("out"), 2300);
-    const t4 = setTimeout(() => onDone(), 2900);
+    const t2 = setTimeout(() => setPhase("glow"),    600);
+    const t3 = setTimeout(() => setPhase("out"),    2300);
+    const t4 = setTimeout(() => onDone(),           2900);
     return () => [t1, t2, t3, t4].forEach(clearTimeout);
   }, [onDone]);
 
@@ -312,7 +260,6 @@ function SplashScreen({ onDone }) {
       opacity: phase === "out" ? 0 : 1,
       transition: phase === "out" ? "opacity 0.6s ease" : "none",
     }}>
-      {/* Red border lines top + bottom — matching the PPTX slide border */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "#D91F26" }} />
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 3, background: "#D91F26" }} />
 
@@ -320,7 +267,9 @@ function SplashScreen({ onDone }) {
         display: "flex", flexDirection: "column", alignItems: "center", gap: 24,
         transform: phase === "in" ? "scale(0.82)" : "scale(1)",
         opacity: phase === "in" ? 0 : 1,
-        filter: phase === "glow" ? "drop-shadow(0 0 32px rgba(217,31,38,0.7))" : "drop-shadow(0 0 0px transparent)",
+        filter: phase === "glow"
+          ? "drop-shadow(0 0 32px rgba(217,31,38,0.7))"
+          : "drop-shadow(0 0 0px transparent)",
         transition: "transform 0.9s cubic-bezier(0.34,1.56,0.64,1), opacity 0.9s ease, filter 0.6s ease",
       }}>
         <Logo size={170} />
@@ -374,8 +323,10 @@ function CategoryCard({ category, onClick, index }) {
       <img
         src={CATEGORY_IMAGES[category.id]}
         alt={category.name}
+        loading="lazy"
         style={{
-          width: "100%", height: "100%", objectFit: "cover", position: "absolute", inset: 0,
+          width: "100%", height: "100%", objectFit: "cover",
+          position: "absolute", inset: 0,
           transform: active ? "scale(1.06)" : "scale(1)",
           transition: "transform 0.45s ease",
           filter: active ? "brightness(0.45)" : "brightness(0.38)",
@@ -390,16 +341,12 @@ function CategoryCard({ category, onClick, index }) {
       }} />
 
       {/* Red left accent bar */}
-      <div style={{
-        position: "absolute", left: 0, top: 0, bottom: 0, width: 3,
-        background: "#D91F26",
-      }} />
+      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: "#D91F26" }} />
 
       {/* Item count badge */}
       <div style={{
         position: "absolute", top: 10, right: 10,
-        background: "#D91F26",
-        borderRadius: 2, padding: "3px 8px",
+        background: "#D91F26", borderRadius: 2, padding: "3px 8px",
         color: "#FFFFFF", fontSize: 9, fontFamily: "system-ui,sans-serif",
         fontWeight: 700, letterSpacing: 1,
       }}>
@@ -426,18 +373,54 @@ function CategoryCard({ category, onClick, index }) {
   );
 }
 
+// ─── LAZY IMAGE with fade-in ──────────────────────────────────────────────────
+// Wraps <img> with a smooth opacity fade once the image has loaded.
+function LazyImage({ src, alt, style, imgStyle }) {
+  const [loaded, setLoaded] = useState(false);
+
+  const handleError = (e) => {
+    // First try /foods/default.jpg; if that also fails, hide the element
+    if (e.target.src !== `${window.location.origin}/foods/default.jpg`) {
+      e.target.src = "/foods/default.jpg";
+    } else {
+      e.target.style.display = "none";
+    }
+  };
+
+  return (
+    <div style={{ position: "relative", overflow: "hidden", ...style }}>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        onLoad={() => setLoaded(true)}
+        onError={handleError}
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          display: "block",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.4s ease",
+          ...imgStyle,
+        }}
+      />
+    </div>
+  );
+}
+
 // ─── ITEM CARD ─────────────────────────────────────────────────────────────────
 function ItemCard({ item, categoryId, index }) {
   const [active, setActive] = useState(false);
   const [visible, setVisible] = useState(false);
- 
+
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), index * 55);
     return () => clearTimeout(t);
   }, [index]);
- 
+
   const hasPrice = item.price && item.price !== "--" && item.price !== "—";
- 
+
   return (
     <div
       onMouseEnter={() => setActive(true)}
@@ -457,7 +440,7 @@ function ItemCard({ item, categoryId, index }) {
         WebkitTapHighlightColor: "transparent",
       }}
     >
-      {/* Red left bar — always visible on mobile, hover-only on desktop */}
+      {/* Red left bar */}
       <div style={{
         position: "absolute", left: 0, top: 0, bottom: 0, width: 3,
         background: "#D91F26",
@@ -465,25 +448,28 @@ function ItemCard({ item, categoryId, index }) {
         transition: "opacity 0.25s",
         zIndex: 2,
       }} />
- 
-      {/* Image */}
+
+      {/* Image wrapper — 16:9 */}
       <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
-        <img
-          src={getImg(item.name, categoryId)}
+        <LazyImage
+          src={getImagePath(item.name)}
           alt={item.name}
-          style={{
-            width: "100%", height: "100%", objectFit: "cover",
+          style={{ width: "100%", height: "100%" }}
+          imgStyle={{
             transform: active ? "scale(1.06)" : "scale(1)",
-            transition: "transform 0.45s ease",
+            transition: "transform 0.45s ease, opacity 0.4s ease",
             filter: "brightness(0.82)",
-            display: "block",
           }}
-          onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80"; }}
         />
+
+        {/* Gradient overlay */}
         <div style={{
           position: "absolute", inset: 0,
           background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%)",
+          pointerEvents: "none",
         }} />
+
+        {/* Price tag or COMING SOON overlay */}
         {hasPrice ? (
           <div style={{
             position: "absolute", bottom: 0, right: 0,
@@ -491,11 +477,11 @@ function ItemCard({ item, categoryId, index }) {
             padding: "6px 14px 6px 10px",
             color: "#FFFFFF", fontFamily: "Georgia,serif",
             fontSize: "clamp(13px,3.5vw,15px)", fontWeight: "bold",
+            zIndex: 3,
           }}>
             EGP {item.price}
           </div>
         ) : (
-          /* Blurred COMING SOON overlay on image */
           <div style={{
             position: "absolute", inset: 0,
             display: "flex", flexDirection: "column",
@@ -516,7 +502,7 @@ function ItemCard({ item, categoryId, index }) {
           </div>
         )}
       </div>
- 
+
       {/* Text */}
       <div style={{ padding: "12px 14px 14px 16px" }}>
         <div style={{
@@ -536,12 +522,12 @@ function ItemCard({ item, categoryId, index }) {
 // ─── CATEGORY DETAIL PAGE ──────────────────────────────────────────────────────
 function CategoryPage({ category, onBack }) {
   const [visible, setVisible] = useState(false);
- 
+
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 60);
     return () => clearTimeout(t);
   }, []);
- 
+
   return (
     <div className="safe-bottom" style={{
       minHeight: "100vh", background: "#000000", paddingBottom: 60,
@@ -554,7 +540,9 @@ function CategoryPage({ category, onBack }) {
         <img
           src={CATEGORY_IMAGES[category.id]}
           alt={category.name}
+          loading="lazy"
           style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.35)" }}
+          onError={(e) => { e.target.style.display = "none"; }}
         />
         {/* Red border top */}
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "#D91F26" }} />
@@ -562,17 +550,15 @@ function CategoryPage({ category, onBack }) {
           position: "absolute", inset: 0,
           background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 65%, #000000 100%)",
         }} />
- 
-        {/* Back button — large touch target */}
+
+        {/* Back button */}
         <button
           onClick={onBack}
           style={{
             position: "absolute", top: 16, left: 16,
             background: "rgba(0,0,0,0.8)",
-            border: "1px solid #D91F26",
-            borderRadius: 2,
-            minWidth: 44, minHeight: 44,
-            padding: "0 18px",
+            border: "1px solid #D91F26", borderRadius: 2,
+            minWidth: 44, minHeight: 44, padding: "0 18px",
             color: "#FFFFFF", fontFamily: "system-ui,sans-serif",
             fontSize: 12, fontWeight: 700, cursor: "pointer",
             letterSpacing: 2, transition: "background 0.2s",
@@ -586,12 +572,9 @@ function CategoryPage({ category, onBack }) {
         >
           ← BACK
         </button>
- 
+
         {/* Title */}
-        <div style={{
-          position: "absolute", bottom: 14, left: 0, right: 0,
-          padding: "0 14px", textAlign: "center",
-        }}>
+        <div style={{ position: "absolute", bottom: 14, left: 0, right: 0, padding: "0 14px", textAlign: "center" }}>
           <div style={{ fontSize: "clamp(20px,6vw,36px)", marginBottom: 4, lineHeight: 1 }}>{category.emoji}</div>
           <div style={{
             color: "#FFFFFF", fontFamily: "Georgia,serif", fontWeight: "bold",
@@ -604,14 +587,12 @@ function CategoryPage({ category, onBack }) {
               color: "#CCCCCC", fontFamily: "system-ui,sans-serif",
               fontSize: "clamp(8px,2.2vw,11px)", letterSpacing: "clamp(1px,0.8vw,4px)",
               textTransform: "uppercase", textAlign: "center",
-            }}>
-              {category.tagline}
-            </div>
+            }}>{category.tagline}</div>
             <div style={{ width: 24, height: 2, background: "#D91F26", flexShrink: 0 }} />
           </div>
         </div>
       </div>
- 
+
       {/* Items */}
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "20px 12px" }}>
         <div
@@ -642,7 +623,6 @@ function CategoriesPage({ onSelect }) {
 
   return (
     <div className="safe-bottom" style={{ minHeight: "100vh", background: "#000000", paddingBottom: 60 }}>
-      {/* Red border top — the PPTX signature element */}
       <div style={{ height: 3, background: "#D91F26", width: "100%" }} />
 
       {/* Header */}
@@ -656,8 +636,8 @@ function CategoriesPage({ onSelect }) {
           <Logo size={74} />
         </div>
         <div style={{
-          display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 8,
-          overflow: "hidden",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          gap: 10, marginBottom: 8, overflow: "hidden",
         }}>
           <div style={{ width: 36, height: 2, background: "#D91F26", flexShrink: 0 }} />
           <div style={{ color: "#D91F26", fontFamily: "system-ui,sans-serif", fontSize: "clamp(8px,2.5vw,10px)", letterSpacing: "clamp(2px,1.2vw,5px)", fontWeight: 700, whiteSpace: "nowrap" }}>
@@ -732,8 +712,8 @@ export default function App() {
           background: #000000;
           -webkit-tap-highlight-color: transparent;
           padding-bottom: env(safe-area-inset-bottom);
-          padding-left: env(safe-area-inset-left);
-          padding-right: env(safe-area-inset-right);
+          padding-left:   env(safe-area-inset-left);
+          padding-right:  env(safe-area-inset-right);
         }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
@@ -743,24 +723,20 @@ export default function App() {
         img { -webkit-user-drag: none; user-select: none; }
         @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
         @media (max-width: 480px) {
-          .cat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+          .cat-grid  { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
           .item-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
         }
         @media (min-width: 481px) and (max-width: 768px) {
-          .cat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
+          .cat-grid  { grid-template-columns: repeat(2, 1fr) !important; gap: 14px !important; }
           .item-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 360px) {
-          .cat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+          .cat-grid  { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
           .cat-banner { height: 120px !important; }
         }
         .safe-bottom { padding-bottom: max(60px, calc(60px + env(safe-area-inset-bottom))) !important; }
-        @media (max-width: 480px) {
-          .cat-banner { height: 150px !important; }
-        }
-        @media (max-width: 360px) {
-          .cat-banner { height: 130px !important; }
-        }
+        @media (max-width: 480px) { .cat-banner { height: 150px !important; } }
+        @media (max-width: 360px) { .cat-banner { height: 130px !important; } }
       `}</style>
 
       {screen === "splash" && <SplashScreen onDone={handleSplashDone} />}
