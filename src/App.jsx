@@ -325,7 +325,7 @@ function CategoryCard({ category, onClick, index }) {
         alt={category.name}
         loading="lazy"
         style={{
-          width: "100%", height: "100%", objectFit: "contain",background: "#111",
+          width: "100%", height: "100%", objectFit: "cover",
           position: "absolute", inset: 0,
           transform: active ? "scale(1.06)" : "scale(1)",
           transition: "transform 0.45s ease",
@@ -399,6 +399,7 @@ function LazyImage({ src, alt, style, imgStyle }) {
           width: "100%",
           height: "100%",
           objectFit: "cover",
+          objectPosition: "center center",
           display: "block",
           opacity: loaded ? 1 : 0,
           transition: "opacity 0.4s ease",
@@ -449,8 +450,8 @@ function ItemCard({ item, categoryId, index }) {
         zIndex: 2,
       }} />
 
-      {/* Image wrapper — 16:9 */}
-      <div style={{ position: "relative", overflow: "hidden", aspectRatio: "16/9" }}>
+      {/* Image wrapper — square to fill portrait photos */}
+      <div style={{ position: "relative", overflow: "hidden", aspectRatio: "1/1" }}>
         <LazyImage
           src={getImagePath(item.name)}
           alt={item.name}
@@ -458,14 +459,17 @@ function ItemCard({ item, categoryId, index }) {
           imgStyle={{
             transform: active ? "scale(1.06)" : "scale(1)",
             transition: "transform 0.45s ease, opacity 0.4s ease",
-            filter: "brightness(0.82)",
+            objectFit: "cover",
+            objectPosition: "center center",
+            width: "100%",
+            height: "100%",
           }}
         />
 
-        {/* Gradient overlay */}
+        {/* Gradient overlay — subtle fade only at bottom for price badge legibility */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 55%)",
+          background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 35%)",
           pointerEvents: "none",
         }} />
 
