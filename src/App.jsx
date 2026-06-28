@@ -325,7 +325,7 @@ function CategoryCard({ category, onClick, index }) {
         alt={category.name}
         loading="lazy"
         style={{
-          width: "100%", height: "100%", objectFit: "cover",
+          width: "100%", height: "100%", objectFit: "contain",background: "#111",
           position: "absolute", inset: 0,
           transform: active ? "scale(1.06)" : "scale(1)",
           transition: "transform 0.45s ease",
