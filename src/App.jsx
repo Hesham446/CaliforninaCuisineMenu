@@ -398,9 +398,10 @@ function LazyImage({ src, alt, style, imgStyle }) {
         style={{
           width: "100%",
           height: "100%",
-          objectFit: "cover",
+          objectFit: "contain",
           objectPosition: "center center",
           display: "block",
+          background: "#000000",
           opacity: loaded ? 1 : 0,
           transition: "opacity 0.4s ease",
           ...imgStyle,
@@ -459,10 +460,6 @@ function ItemCard({ item, categoryId, index }) {
           imgStyle={{
             transform: active ? "scale(1.06)" : "scale(1)",
             transition: "transform 0.45s ease, opacity 0.4s ease",
-            objectFit: "cover",
-            objectPosition: "center center",
-            width: "100%",
-            height: "100%",
           }}
         />
 
